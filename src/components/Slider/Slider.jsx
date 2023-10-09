@@ -9,9 +9,10 @@ export const Slider = () => {
   useEffect(() => {
     const fetchTrendCoins = async () => {
       try {
-        const res = await axios.get("https://api.coingecko.com/api/v3/search/trending");
-        setTrendCoin(res.data.coins);
-        console.log(res.data.coins);
+        const res = await axios.get(
+          "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&locale=en"
+        );
+        setTrendCoin(res.data);
       } catch (error) {
         console.log(error);
       }
@@ -33,9 +34,10 @@ export const Slider = () => {
             style={{ transform: `translateX(${currentSlide * 150}px)` }}
           >
             {trendCoin.map((coin) => (
-              <li key={coin.item.id} className="flex flex-col items-center text-md w-full">
-                <img src={coin.item.small} alt={coin.item.id} className="w-1/4" />
-                {coin.item.name}
+              <li key={coin.id} className="flex flex-col items-center text-md w-full">
+                <img src={coin.image} alt={coin.id} className="w-1/4" />
+                <p>{coin.name}</p>
+                <p>{coin.current_price}</p>
               </li>
             ))}
           </ul>
