@@ -12,7 +12,7 @@ export const Slider = () => {
         const res = await axios.get(
           "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&locale=en"
         );
-        setTrendCoin(res.data);
+        setTrendCoin(res.data.slice(0, 10));
       } catch (error) {
         console.log(error);
       }
@@ -23,7 +23,7 @@ export const Slider = () => {
   return (
     <div className="slider">
       <div className="container">
-        <h1 className="title text-center uppercase mt-4 text-2xl">Trending</h1>
+        <h1 className="title text-center uppercase mt-4 text-2xl">Get All The Info about you Favorite Crypto Currency</h1>
         <div className="coin-wrapper relative overflow-hidden">
           <BsFillArrowLeftCircleFill
             className="absolute top-1/4 left-0 text-4xl cursor-pointer z-50"
@@ -37,7 +37,7 @@ export const Slider = () => {
               <li key={coin.id} className="flex flex-col items-center text-md w-full">
                 <img src={coin.image} alt={coin.id} className="w-1/4" />
                 <p>{coin.name}</p>
-                <p>{coin.current_price}</p>
+                <p>$ {coin.current_price}</p>
               </li>
             ))}
           </ul>
