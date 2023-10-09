@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.trend-coin-container {
+  width: calc(100% + 500px);
+}
