@@ -23,7 +23,9 @@ export const Slider = () => {
   return (
     <div className="slider">
       <div className="container">
-        <h1 className="title text-center uppercase mt-4 text-2xl">Get All The Info about you Favorite Crypto Currency</h1>
+        <h1 className="title text-center uppercase mt-4 text-2xl">
+          Get All The Info about you Favorite Crypto Currency
+        </h1>
         <div className="coin-wrapper relative overflow-hidden">
           <BsFillArrowLeftCircleFill
             className="absolute top-1/4 left-0 text-4xl cursor-pointer z-50"
