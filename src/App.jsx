@@ -6,15 +6,15 @@ import { SingleCoin } from "./pages/SingleCoin";
 function App() {
   return (
     <>
-        <BrowserRouter>
-          <div className="holder bg-gradient-to-r from-sky-500 to-indigo-500 h-full">
-            <Header />
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/coin/:id" element={<SingleCoin />} />
-            </Routes>
-          </div>
-        </BrowserRouter>
+      <BrowserRouter>
+        <div className="holder bg-gradient-to-r from-sky-500 to-indigo-500 h-full">
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/coins/:id" element={<SingleCoin />} />
+          </Routes>
+        </div>
+      </BrowserRouter>
     </>
   );
 }

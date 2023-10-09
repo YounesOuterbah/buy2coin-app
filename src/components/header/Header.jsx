@@ -4,13 +4,13 @@ import { AiFillCloseCircle } from "react-icons/ai";
 import { useState } from "react";
 
 export const Header = () => {
-  const [toggle, setToggle] = useState(true);
+  const [toggle, setToggle] = useState(false);
   return (
     <div className="header h-24 flex">
       <div className="container flex justify-between items-center text-xl">
-        <div className="logo">
+        <Link to="/">
           <h1 className="uppercase font-bold ml-1 text-2xl md:text-4xl ">BYTECOIN</h1>
-        </div>
+        </Link>
         {toggle ? (
           <AiFillCloseCircle className="text-2xl md:hidden" onClick={() => setToggle(!toggle)} />
         ) : (

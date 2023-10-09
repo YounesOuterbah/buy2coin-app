@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export const Market = () => {
   const [search, setSearch] = useState();
@@ -41,19 +42,21 @@ export const Market = () => {
             </div>
             <div className="tb">
               {tableCoins.map((coin) => (
-                <div
+                <Link
+                  to={`/coins/${coin.id}`}
                   key={coin.id}
                   className="flex justify-between items-center bg-[#26272b] my-2 p-2 rounded-md cursor-pointer duration-300 @apply shadow-[0px_0px_12px_#18191b] hover:scale-105"
+                  onClick={() => setSelectedCoin(coin)}
                 >
                   <p>{coin.market_cap_rank}</p>
                   <div className="flex items-center">
                     <img src={coin.image} alt={coin.id} className="w-10" />
                     <p className="ml-1">{coin.name}</p>
                   </div>
-                  <p>${coin.current_price}</p>
+                  <p>${(coin.current_price).toLocaleString()}</p>
                   <p>{coin.price_change_percentage_24h.toFixed(2)}%</p>
-                  <p>${coin.market_cap}</p>
-                </div>
+                  <p>${(coin.market_cap).toLocaleString()}</p>
+                </Link>
               ))}
             </div>
           </div>
