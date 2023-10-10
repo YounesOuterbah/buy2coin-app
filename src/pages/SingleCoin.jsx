@@ -20,5 +20,5 @@ export const SingleCoin = () => {
       });
   }, []);
 
-  return <div className="container">{coin.name}</div>;
+  return <div className="container text-white">{coin.name}</div>;
 };

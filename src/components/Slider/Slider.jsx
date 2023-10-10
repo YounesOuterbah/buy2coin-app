@@ -28,7 +28,7 @@ export const Slider = () => {
         </h1>
         <div className="coin-wrapper relative overflow-hidden">
           <BsFillArrowLeftCircleFill
-            className="absolute top-1/4 left-0 text-4xl cursor-pointer z-50"
+            className="absolute top-1/4 left-0 text-4xl cursor-pointer z-50 bg-white rounded-full"
             onClick={() => setCurrentSlide(currentSlide + 1)}
           />
           <ul
@@ -36,7 +36,7 @@ export const Slider = () => {
             style={{ transform: `translateX(${currentSlide * 150}px)` }}
           >
             {trendCoin.map((coin) => (
-              <li key={coin.id} className="flex flex-col items-center text-md w-full">
+              <li key={coin.id} className="flex flex-col items-center text-md w-full text-white">
                 <img src={coin.image} alt={coin.id} className="w-1/4" />
                 <p>{coin.name}</p>
                 <p>$ {coin.current_price}</p>
@@ -44,7 +44,7 @@ export const Slider = () => {
             ))}
           </ul>
           <BsFillArrowRightCircleFill
-            className="absolute top-1/4 right-0 text-4xl cursor-pointer z-50"
+            className="absolute top-1/4 right-0 text-4xl cursor-pointer z-50 bg-white rounded-full"
             onClick={() => setCurrentSlide(currentSlide - 1)}
           />
         </div>

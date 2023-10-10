@@ -1,10 +1,12 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { Pagination } from "../../utils/Pagination";
 
 export const Market = () => {
   const [tableCoins, setTableCoins] = useState([]);
   const [filterdTableCoins, setFilterdTableCoins] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     const fetchTableCoins = async () => {
@@ -12,7 +14,7 @@ export const Market = () => {
         const res = await axios.get(
           "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&locale=en"
         );
-        setTableCoins(res.data.slice(0, 15));
+        setTableCoins(res.data);
         console.log(res.data);
       } catch (error) {
         console.log(error);
@@ -31,6 +33,13 @@ export const Market = () => {
   useEffect(() => {
     setFilterdTableCoins(tableCoins);
   }, [tableCoins]);
+
+  const COIN_INFO_PER_PAGE = 15;
+  const pages = Math.ceil(filterdTableCoins.length / COIN_INFO_PER_PAGE);
+  const startInedx = (currentPage - 1) * COIN_INFO_PER_PAGE;
+  const lastIndex = currentPage * COIN_INFO_PER_PAGE;
+
+  const TableCoinsPagination = filterdTableCoins.slice(startInedx, lastIndex);
 
   return (
     <div className="market pb-96">
@@ -52,7 +61,7 @@ export const Market = () => {
               <p>Market Cap</p>
             </div>
             <div className="tb">
-              {filterdTableCoins.map((coin) => (
+              {TableCoinsPagination.map((coin) => (
                 <Link
                   to={`/coins/${coin.id}`}
                   key={coin.id}
@@ -68,6 +77,7 @@ export const Market = () => {
                   <p>${coin.market_cap.toLocaleString()}</p>
                 </Link>
               ))}
+              <Pagination pages={pages} currentPage={currentPage} setCurrentPage={setCurrentPage}/>
             </div>
           </div>
         </div>

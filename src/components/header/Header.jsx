@@ -12,9 +12,9 @@ export const Header = () => {
           <h1 className="uppercase font-bold ml-1 text-white text-2xl md:text-4xl ">BYTECOIN</h1>
         </Link>
         {toggle ? (
-          <AiFillCloseCircle className="text-2xl md:hidden" onClick={() => setToggle(!toggle)} />
+          <AiFillCloseCircle className="text-2xl text-white md:hidden" onClick={() => setToggle(!toggle)} />
         ) : (
-          <FaBars className="text-2xl md:hidden" onClick={() => setToggle(!toggle)} />
+          <FaBars className="text-2xl text-white md:hidden" onClick={() => setToggle(!toggle)} />
         )}
         <ul
           className={`list ${
