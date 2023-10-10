@@ -23,7 +23,7 @@ export const Slider = () => {
   return (
     <div className="slider">
       <div className="container">
-        <h1 className="title text-center uppercase mt-4 text-2xl">
+        <h1 className="title text-center uppercase mt-4 text-2xl text-white">
           Get All The Info about you Favorite Crypto Currency
         </h1>
         <div className="coin-wrapper relative overflow-hidden">

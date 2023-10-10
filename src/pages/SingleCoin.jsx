@@ -20,6 +20,5 @@ export const SingleCoin = () => {
       });
   }, []);
 
-  console.log(id);
   return <div className="container">{coin.name}</div>;
 };

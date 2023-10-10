@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <div className="holder bg-gradient-to-r from-sky-500 to-indigo-500 h-full">
+        <div className="holder @apply bg-[linear-gradient(0deg,#0f051d_30%,#130749_70%)] h-full">
           <Header />
           <Routes>
             <Route path="/" element={<Home />} />

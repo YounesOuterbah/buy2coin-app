@@ -3,8 +3,8 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 export const Market = () => {
-  const [search, setSearch] = useState();
   const [tableCoins, setTableCoins] = useState([]);
+  const [filterdTableCoins, setFilterdTableCoins] = useState([]);
 
   useEffect(() => {
     const fetchTableCoins = async () => {
@@ -21,16 +21,27 @@ export const Market = () => {
     fetchTableCoins();
   }, []);
 
+  const handleChange = (e) => {
+    const filterCoins = tableCoins.filter((coin) =>
+      coin.name.toLowerCase().includes(e.target.value)
+    );
+    setFilterdTableCoins(filterCoins);
+  };
+
+  useEffect(() => {
+    setFilterdTableCoins(tableCoins);
+  }, [tableCoins]);
+
   return (
     <div className="market pb-96">
       <div className="container">
-        <h1 className="title uppercase text-2xl font-semibold">Market Status</h1>
+        <h1 className="title uppercase text-2xl font-semibold text-white my-4">Market Status</h1>
         <div className="search-box text-black">
           <input
             type="search"
             className="w-full py-2 px-4 outline-none"
             placeholder="Search for a Crypto Currency"
-            onChange={(e) => setSearch(e.target.value)}
+            onInput={handleChange}
           />
           <div className="table w-full mt-6 text-white">
             <div className="th flex justify-between bg-[#26272b] rounded-md p-2">
@@ -41,21 +52,20 @@ export const Market = () => {
               <p>Market Cap</p>
             </div>
             <div className="tb">
-              {tableCoins.map((coin) => (
+              {filterdTableCoins.map((coin) => (
                 <Link
                   to={`/coins/${coin.id}`}
                   key={coin.id}
                   className="flex justify-between items-center bg-[#26272b] my-2 p-2 rounded-md cursor-pointer duration-300 @apply shadow-[0px_0px_12px_#18191b] hover:scale-105"
-                  onClick={() => setSelectedCoin(coin)}
                 >
                   <p>{coin.market_cap_rank}</p>
                   <div className="flex items-center">
                     <img src={coin.image} alt={coin.id} className="w-10" />
                     <p className="ml-1">{coin.name}</p>
                   </div>
-                  <p>${(coin.current_price).toLocaleString()}</p>
+                  <p>${coin.current_price.toLocaleString()}</p>
                   <p>{coin.price_change_percentage_24h.toFixed(2)}%</p>
-                  <p>${(coin.market_cap).toLocaleString()}</p>
+                  <p>${coin.market_cap.toLocaleString()}</p>
                 </Link>
               ))}
             </div>
