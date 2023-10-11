@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { Header } from "./components/header/Header";
 import { SingleCoin } from "./pages/SingleCoin";
+import { Footer } from "./components/footer/footer";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/coins/:id" element={<SingleCoin />} />
           </Routes>
+          <Footer />
         </div>
       </BrowserRouter>
     </>

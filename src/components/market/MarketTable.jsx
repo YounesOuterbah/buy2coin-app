@@ -23,7 +23,13 @@ export const MarketTable = ({ TableCoinsPagination }) => {
               <p className="ml-1">{coin.name}</p>
             </div>
             <p>${coin.current_price.toLocaleString()}</p>
-            <p>{coin.price_change_percentage_24h.toFixed(2)}%</p>
+            <p
+              className={`${
+                coin.price_change_percentage_24h.toFixed(2) >= 0 ? "text-green-500" : "text-red-400"
+              } font-bold`}
+            >
+              {coin.price_change_percentage_24h.toFixed(2)}%
+            </p>
             <p className="hidden md:block">${coin.market_cap.toLocaleString()}</p>
           </Link>
         ))}

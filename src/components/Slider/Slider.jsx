@@ -38,7 +38,7 @@ export const Slider = () => {
             {trendCoin.map((coin) => (
               <li key={coin.id} className="flex flex-col items-center text-md w-full text-white">
                 <img src={coin.image} alt={coin.id} className="w-1/4" />
-                <p>{coin.name.slice(0,12)}</p>
+                <p>{coin.name.slice(0,9)}</p>
                 <p className="hidden md:block">$ {coin.current_price}</p>
               </li>
             ))}
