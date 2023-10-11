@@ -7,7 +7,7 @@ export const Pagination = ({ pages, currentPage, setCurrentPage }) => {
   }
   return (
     <>
-      <div className="pagination flex justify-center mt-6">
+      <div className="pagination flex justify-center mt-6 text-white">
         <button
           disabled={currentPage === 1}
           onClick={() => setCurrentPage(currentPage - 1)}
@@ -27,7 +27,7 @@ export const Pagination = ({ pages, currentPage, setCurrentPage }) => {
           </div>
         ))}
         <button
-            disabled={currentPage === pages}
+          disabled={currentPage === pages}
           onClick={() => setCurrentPage(currentPage + 1)}
           className="cursor-pointer mx-1 bg-[#26272b] w-8 h-8 flex items-center justify-center rounded-full p-1 disabled:cursor-not-allowed"
         >

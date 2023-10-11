@@ -31,7 +31,7 @@ export const Header = () => {
           <li
             className=" mt-6 mb-6 md:mr-8 md:text-white md:hover:text-rose-500 duration-500"
           >
-            <Link>Choose Us</Link>
+            <Link>Pricing</Link>
           </li>
           <li
             className=" mt-6 mb-6 md:text-white md:hover:text-rose-500 duration-500"
