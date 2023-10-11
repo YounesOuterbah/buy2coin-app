@@ -2,13 +2,13 @@ import { Link } from "react-router-dom";
 
 export const MarketTable = ({ TableCoinsPagination }) => {
   return (
-    <div className="table w-full mt-6 text-white">
+    <div className="table w-full mt-6 text-white ">
       <div className="th flex justify-between bg-[#26272b] rounded-md p-2">
         <p>#</p>
         <p>Coin</p>
         <p>Price</p>
         <p>24h</p>
-        <p>Market Cap</p>
+        <p className="hidden md:block">Market Cap</p>
       </div>
       <div className="tb">
         {TableCoinsPagination.map((coin) => (
@@ -24,7 +24,7 @@ export const MarketTable = ({ TableCoinsPagination }) => {
             </div>
             <p>${coin.current_price.toLocaleString()}</p>
             <p>{coin.price_change_percentage_24h.toFixed(2)}%</p>
-            <p>${coin.market_cap.toLocaleString()}</p>
+            <p className="hidden md:block">${coin.market_cap.toLocaleString()}</p>
           </Link>
         ))}
       </div>
