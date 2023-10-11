@@ -1,23 +1,43 @@
-import { FaXTwitter, FaInstagram, FaYoutube, FaDiscord } from "react-icons/fa6";
+import {
+  FaSquareXTwitter,
+  FaSquareInstagram,
+  FaSquareYoutube,
+  FaSquareFacebook,
+} from "react-icons/fa6";
 
 export const Footer = () => {
   return (
-    <div className="footer mt-6">
-      <div className="container text-white">
-        <ul>
+    <div className="footer mt-32 ">
+      <div className="container text-white relative">
+        <ul className="flex items-center justify-center">
           <li>
-            <FaXTwitter className="text-2xl" />
+            <FaSquareXTwitter className="text-3xl mx-2 cursor-pointer" />
           </li>
           <li>
-            <FaInstagram className="text-2xl" />
+            <FaSquareInstagram className="text-3xl mx-2 cursor-pointer" />
           </li>
           <li>
-            <FaYoutube className="text-2xl" />
+            <FaSquareYoutube className="text-3xl mx-2 cursor-pointer" />
           </li>
           <li>
-            <FaDiscord className="text-2xl" />
+            <FaSquareFacebook className="text-3xl mx-2 cursor-pointer" />
           </li>
         </ul>
+        <ul className="flex items-center justify-center mt-6 text-xl text-white mb-6">
+          <li
+            className="mr-6 cursor-pointer duration-300 hover:@apply hover:bg-clip-text hover:bg-[linear-gradient(25deg,#2600fc,#ff00ea)] hover:text-transparent
+            -webkit-background-clip: text"
+          >
+            Privacy
+          </li>
+          <li
+            className="ml-6 cursor-pointer duration-300 hover:@apply hover:bg-clip-text hover:bg-[linear-gradient(25deg,#2600fc,#ff00ea)] hover:text-transparent
+                -webkit-background-clip: text"
+          >
+            Terms of Use
+          </li>
+        </ul>
+        <img src="/imgs/golden-coin.png" alt="golden-coin-image"/>
       </div>
     </div>
   );

@@ -5,9 +5,9 @@ export const Price = () => {
   const [activeButton, setActiveButton] = useState("MONTHLY");
 
   return (
-    <div className="choose py-10 text-white">
+    <div className="choose py-20 text-white">
       <div className="container">
-        <h1 className="title text-center text-8xl font-bold">
+        <h1 className="title text-center text-6xl md:text-8xl font-bold">
           OUR{" "}
           <span
             className="@apply bg-clip-text bg-[linear-gradient(25deg,#2600fc,#ff00ea)] text-transparent
@@ -18,7 +18,7 @@ export const Price = () => {
           <div className="text-lg font-thin mt-1">
             Whether your time-saving automation needs are large or small, we’re here to help you
             scale.
-            <div className="buttons flex text-lg mx-auto mt-4 font-normal bg-[#f2edec] w-fit text-[#3b3472] rounded-full overflow-hidden">
+            <div className="buttons flex text-lg mx-auto mt-12 font-normal bg-[#f2edec] w-fit text-[#3b3472] rounded-full overflow-hidden">
               <button
                 onClick={() => setActiveButton("MONTHLY")}
                 className={`p-2 w-32 ${
