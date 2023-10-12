@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { Header } from "./components/header/Header";
-import { SingleCoin } from "./pages/SingleCoin";
+import { SingleCoin } from "./pages/singleCoin/SingleCoin";
 import { Footer } from "./components/footer/footer";
 
 function App() {
