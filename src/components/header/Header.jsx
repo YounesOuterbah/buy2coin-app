@@ -2,10 +2,18 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import { AiFillCloseCircle } from "react-icons/ai";
+import { useCurrency } from "../../context/CurrencyContext";
 
 export const Header = () => {
   const [toggle, setToggle] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
+
+  const { selectedCurrency, setCurrency } = useCurrency();
+
+  const handleCurrencyChange = (event) => {
+    const currency = event.target.value;
+    setCurrency(currency);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -55,11 +63,15 @@ export const Header = () => {
               <a href="#pricing">Pricing</a>
             </li>
           </ul>
-          <select className="options text-gray-900">
-            <option value="usd" className="text-xs">
+          <select
+            className="options bg-[#26272b] text-white"
+            onChange={handleCurrencyChange}
+            value={selectedCurrency}
+          >
+            <option value="usd" className="text-md">
               USD
             </option>
-            <option value="eur" className="text-xs">
+            <option value="eur" className="text-md">
               EUR
             </option>
           </select>

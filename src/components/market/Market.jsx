@@ -2,17 +2,19 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { MarketTable } from "./MarketTable";
 import { Pagination } from "../../utils/Pagination";
+import { useCurrency } from "../../context/CurrencyContext";
 
 export const Market = () => {
   const [tableCoins, setTableCoins] = useState([]);
   const [filteredTableCoins, setFilteredTableCoins] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const { selectedCurrency } = useCurrency();
 
   useEffect(() => {
     const fetchTableCoins = async () => {
       try {
         const res = await axios.get(
-          "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&locale=en"
+          `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${selectedCurrency}&order=market_cap_desc&per_page=100&page=1&sparkline=false&locale=en`
         );
         const initialData = res.data;
         setTableCoins(initialData);
@@ -22,7 +24,7 @@ export const Market = () => {
       }
     };
     fetchTableCoins();
-  }, []);
+  }, [selectedCurrency]);
 
   const handleChange = (e) => {
     const searchQuery = e.target.value.toLowerCase();
@@ -49,7 +51,10 @@ export const Market = () => {
             placeholder="Search for a Crypto Currency"
             onInput={handleChange}
           />
-          <MarketTable TableCoinsPagination={TableCoinsPagination} />
+          <MarketTable
+            TableCoinsPagination={TableCoinsPagination}
+            selectedCurrency={selectedCurrency}
+          />
           <Pagination pages={pages} setCurrentPage={setCurrentPage} currentPage={currentPage} />
         </div>
       </div>

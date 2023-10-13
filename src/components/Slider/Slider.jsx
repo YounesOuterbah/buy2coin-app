@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { BsFillArrowLeftCircleFill, BsFillArrowRightCircleFill } from "react-icons/bs";
+import { useCurrency } from "../../context/CurrencyContext";
 
 export const Slider = () => {
   const [trendCoin, setTrendCoin] = useState([]);
@@ -8,11 +9,13 @@ export const Slider = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const { selectedCurrency } = useCurrency();
+
   useEffect(() => {
     const fetchTrendCoins = async () => {
       try {
         const res = await axios.get(
-          "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false&locale=en"
+          `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${selectedCurrency}&order=market_cap_desc&per_page=10&page=1&sparkline=false&locale=en`
         );
         setTrendCoin(res.data);
         setIsLoading(false);
@@ -31,7 +34,7 @@ export const Slider = () => {
     return () => {
       clearInterval(interval);
     };
-  }, [currentSlide]);
+  }, [currentSlide, selectedCurrency]);
 
   if (error || isLoading) {
     return <p className="text-center text-white font-bold text-2xl mt-6">Loading ...</p>;
@@ -56,7 +59,11 @@ export const Slider = () => {
               <li key={coin.id} className="flex flex-col items-center text-md w-full text-white">
                 <img src={coin.image} alt={coin.id} className="w-1/4" />
                 <p>{coin.name.slice(0, 9)}</p>
-                <p className="hidden md:block">$ {coin.current_price}</p>
+                <p className="hidden md:block">
+                  {selectedCurrency === "usd"
+                    ? `$ ${coin.current_price}`
+                    : `€ ${coin.current_price}`}
+                </p>
               </li>
             ))}
           </ul>

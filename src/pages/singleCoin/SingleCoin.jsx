@@ -16,6 +16,7 @@ import { Line } from "react-chartjs-2";
 import moment from "moment/moment";
 import { SingleCoinInfo } from "./SingleCoininfo";
 import { SingleCoinChart } from "./SingleCoinChart";
+import { useCurrency } from "../../context/CurrencyContext";
 
 ChartJS.register(
   CategoryScale,
@@ -35,9 +36,11 @@ export const SingleCoin = () => {
   const [chartControl, setChartControl] = useState("1");
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const { selectedCurrency } = useCurrency();
+
 
   const url = `https://api.coingecko.com/api/v3/coins/${id}`;
-  const chart_url = `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=${chartControl}`;
+  const chart_url = `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=${selectedCurrency}&days=${chartControl}`;
 
   useEffect(() => {
     axios

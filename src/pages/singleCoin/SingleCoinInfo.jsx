@@ -1,4 +1,10 @@
+import { useCurrency } from "../../context/CurrencyContext";
+
 export const SingleCoinInfo = ({ coin }) => {
+  const { selectedCurrency } = useCurrency();
+
+  const getCurrencySymbol = () => (selectedCurrency === "usd" ? "$" : "€");
+
   return (
     <>
       <div className="info bg-[#26272b] p-2 rounded md:mr-4 mb-4 md:mb-0">
@@ -13,7 +19,8 @@ export const SingleCoinInfo = ({ coin }) => {
         <h1 className="text-2xl font-bold mt-2 text-center md:text-start">
           Current Price:{" "}
           <span className="text-green-400">
-            ${coin.market_data?.current_price.usd.toLocaleString()}
+            {getCurrencySymbol()}
+            {coin.market_data?.current_price[selectedCurrency].toLocaleString()}
           </span>
         </h1>
       </div>
