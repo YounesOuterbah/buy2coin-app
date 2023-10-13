@@ -5,7 +5,7 @@ import { Pagination } from "../../utils/Pagination";
 
 export const Market = () => {
   const [tableCoins, setTableCoins] = useState([]);
-  const [filterdTableCoins, setFilterdTableCoins] = useState([]);
+  const [filteredTableCoins, setFilteredTableCoins] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
@@ -14,7 +14,9 @@ export const Market = () => {
         const res = await axios.get(
           "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&locale=en"
         );
-        setTableCoins(res.data);
+        const initialData = res.data;
+        setTableCoins(initialData);
+        setFilteredTableCoins(initialData);
       } catch (error) {
         console.log(error);
       }
@@ -23,22 +25,18 @@ export const Market = () => {
   }, []);
 
   const handleChange = (e) => {
-    const filterCoins = tableCoins.filter((coin) =>
-      coin.name.toLowerCase().includes(e.target.value)
-    );
-    setFilterdTableCoins(filterCoins);
+    const searchQuery = e.target.value.toLowerCase();
+    const filterCoins = tableCoins.filter((coin) => coin.name.toLowerCase().includes(searchQuery));
+    setFilteredTableCoins(filterCoins);
+    setCurrentPage(1);
   };
 
-  useEffect(() => {
-    setFilterdTableCoins(tableCoins);
-  }, [tableCoins]);
-
   const COIN_INFO_PER_PAGE = 15;
-  const pages = Math.ceil(filterdTableCoins.length / COIN_INFO_PER_PAGE);
+  const pages = Math.ceil(filteredTableCoins.length / COIN_INFO_PER_PAGE);
   const startInedx = (currentPage - 1) * COIN_INFO_PER_PAGE;
   const lastIndex = currentPage * COIN_INFO_PER_PAGE;
 
-  const TableCoinsPagination = filterdTableCoins.slice(startInedx, lastIndex);
+  const TableCoinsPagination = filteredTableCoins.slice(startInedx, lastIndex);
 
   return (
     <div className="market pb-12">
