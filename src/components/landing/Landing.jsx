@@ -3,7 +3,7 @@ import ETHcoin from "/imgs/eth-coin.png";
 
 export const Landing = () => {
   return (
-    <div className="landing mt-7">
+    <div className="landing mt-7 mb-16">
       <div className="container flex items-center justify-center relative">
         <img src={BITcoin} className="absolute w-14 left-6 md:w-28 md:left-12 animate-pulse" />
         <div className="big-title text-6xl md:text-8xl text-center font-bold">

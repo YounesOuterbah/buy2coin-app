@@ -32,23 +32,25 @@ export const SingleCoin = () => {
   const { id } = useParams();
   const [coin, setCoin] = useState({});
   const [chart, setChart] = useState();
-
   const [chartControl, setChartControl] = useState("1");
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const url = `https://api.coingecko.com/api/v3/coins/${id}`;
+  const chart_url = `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=${chartControl}`;
 
   useEffect(() => {
     axios
       .get(url)
       .then((res) => {
         setCoin(res.data);
+        setIsLoading(false);
       })
       .catch((error) => {
-        console.log(error);
+        setError(error);
+        setIsLoading(false);
       });
   }, []);
-
-  const chart_url = `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=${chartControl}`;
 
   useEffect(() => {
     axios
@@ -80,12 +82,25 @@ export const SingleCoin = () => {
     ],
   };
 
+  if (isLoading) {
+    return <p className="text-white text-4xl text-center">Loading...</p>;
+  }
+
+  if (error) {
+    return <p>Error: {error.message}</p>;
+  }
+
   return (
     <div className="single-coin pt-16">
       <div className="container text-white">
         <div className="coin-information-wrapper flex flex-col md:flex-row">
           <SingleCoinInfo coin={coin} />
-          <SingleCoinChart options={options} data={data} setChartControl={setChartControl} Line={Line}/>
+          <SingleCoinChart
+            options={options}
+            data={data}
+            setChartControl={setChartControl}
+            Line={Line}
+          />
         </div>
       </div>
     </div>

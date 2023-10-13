@@ -9,7 +9,7 @@ export const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      window.scrollY > 100 ? setIsSticky(true) : setIsSticky(false);
+      window.scrollY > 80 ? setIsSticky(true) : setIsSticky(false);
     };
     window.addEventListener("scroll", handleScroll);
 
@@ -49,13 +49,10 @@ export const Header = () => {
             }`}
           >
             <li className=" mt-6 mb-6 md:mr-8 md:text-white md:hover:text-rose-500 duration-500">
-              <Link>Market</Link>
+              <a href="#market">Market</a>
             </li>
             <li className=" mt-6 mb-6 md:mr-8 md:text-white md:hover:text-rose-500 duration-500">
-              <Link>Pricing</Link>
-            </li>
-            <li className=" mt-6 mb-6 md:text-white md:hover:text-rose-500 duration-500">
-              <Link>Join</Link>
+              <a href="#pricing">Pricing</a>
             </li>
           </ul>
           <select className="options text-gray-900">

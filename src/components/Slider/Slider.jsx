@@ -5,18 +5,23 @@ import { BsFillArrowLeftCircleFill, BsFillArrowRightCircleFill } from "react-ico
 export const Slider = () => {
   const [trendCoin, setTrendCoin] = useState([]);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchTrendCoins = async () => {
       try {
         const res = await axios.get(
-          "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&locale=en"
+          "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false&locale=en"
         );
-        setTrendCoin(res.data.slice(0, 10));
+        setTrendCoin(res.data);
+        setIsLoading(false);
       } catch (error) {
-        console.log(error);
+        setError(error);
+        setIsLoading(false);
       }
     };
+
     fetchTrendCoins();
 
     const interval = setInterval(() => {
@@ -28,11 +33,15 @@ export const Slider = () => {
     };
   }, [currentSlide]);
 
+  if (error || isLoading) {
+    return <p className="text-center text-white font-bold text-2xl mt-6">Loading ...</p>;
+  }
+
   return (
     <div className="slider">
       <div className="container">
         <h1 className="title text-center uppercase mt-4 text-2xl text-white">
-          Get All The Info about your Favorite Crypto Currency
+          Get All The Info about your Favorite Cryptocurrency
         </h1>
         <div className="coin-wrapper relative overflow-hidden">
           <BsFillArrowLeftCircleFill

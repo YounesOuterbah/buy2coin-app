@@ -5,7 +5,7 @@ export const Price = () => {
   const [activeButton, setActiveButton] = useState("MONTHLY");
 
   return (
-    <div className="choose py-20 text-white">
+    <div className="choose py-20 text-white" id="pricing">
       <div className="container">
         <h1 className="title text-center text-6xl md:text-8xl font-bold">
           OUR{" "}
