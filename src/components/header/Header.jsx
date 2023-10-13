@@ -64,7 +64,7 @@ export const Header = () => {
             </li>
           </ul>
           <select
-            className="options bg-[#26272b] text-white"
+            className="options bg-[#26272b] text-white py-1 px-2 rounded-md"
             onChange={handleCurrencyChange}
             value={selectedCurrency}
           >

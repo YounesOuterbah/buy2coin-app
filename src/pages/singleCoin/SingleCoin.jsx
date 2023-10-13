@@ -38,7 +38,6 @@ export const SingleCoin = () => {
   const [error, setError] = useState(null);
   const { selectedCurrency } = useCurrency();
 
-
   const url = `https://api.coingecko.com/api/v3/coins/${id}`;
   const chart_url = `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=${selectedCurrency}&days=${chartControl}`;
 
@@ -86,7 +85,9 @@ export const SingleCoin = () => {
   };
 
   if (isLoading) {
-    return <p className="text-white text-4xl text-center">Loading...</p>;
+    return (
+      <div className="border-gray-300 h-20 mx-auto mt-6 w-20 animate-spin rounded-full border-8 border-t-blue-600" />
+    );
   }
 
   if (error) {

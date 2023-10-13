@@ -22,7 +22,7 @@ export const MarketTable = ({ TableCoinsPagination, selectedCurrency }) => {
       </div>
       <div className="tb">
         {isLoading ? (
-          <p>Loading...</p>
+          <div className="border-gray-300 h-20 mx-auto mt-6 w-20 animate-spin rounded-full border-8 border-t-blue-600" />
         ) : (
           TableCoinsPagination.map((coin) => (
             <Link

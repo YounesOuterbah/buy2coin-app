@@ -37,7 +37,9 @@ export const Slider = () => {
   }, [currentSlide, selectedCurrency]);
 
   if (error || isLoading) {
-    return <p className="text-center text-white font-bold text-2xl mt-6">Loading ...</p>;
+    return (
+      <div className="border-gray-300 h-20 mx-auto mt-6 w-20 animate-spin rounded-full border-8 border-t-blue-600" />
+    );
   }
 
   return (
