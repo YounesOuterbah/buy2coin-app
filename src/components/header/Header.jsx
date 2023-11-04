@@ -40,14 +40,23 @@ export const Header = () => {
         <Link to="/">
           <h1 className="uppercase font-bold ml-1 text-white text-2xl md:text-4xl">BUY2COIN</h1>
         </Link>
-        <div className={pathLocation ? "flex justify-between items-center flex-row-reverse md:flex-row" : "flex justify-between items-center flex-row-reverse md:flex-row"}>
+        <div
+          className={
+            pathLocation
+              ? "flex justify-between items-center flex-row-reverse md:flex-row"
+              : "flex justify-between items-center  w-1/2 flex-row-reverse md:flex-row"
+          }
+        >
           {toggle ? (
             <AiFillCloseCircle
-              className="text-2xl text-white md:hidden"
+              className="text-2xl text-red-400 cursor-pointer md:hidden"
               onClick={() => setToggle(!toggle)}
             />
           ) : (
-            <FaBars className="text-2xl text-white md:hidden" onClick={() => setToggle(!toggle)} />
+            <FaBars
+              className="text-2xl cursor-pointer text-white md:hidden"
+              onClick={() => setToggle(!toggle)}
+            />
           )}
 
           <ul
@@ -55,7 +64,7 @@ export const Header = () => {
             className={`list ${
               toggle
                 ? "absolute text-xl top-24 pl-9 left-0 w-full bg-white text-gray-900 z-50 duration-1000 md:flex"
-                : "absolute text-xl -top-96 duration-1000 w-full left-0 flex"
+                : "absolute text-xl -top-96 -ml-8 duration-1000 w-full left-0 flex"
             } md:${
               toggle ? "flex md:bg-transparent md:static md:w-fit" : "flex md:static md:w-fit"
             }`}
