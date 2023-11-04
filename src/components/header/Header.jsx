@@ -66,13 +66,15 @@ export const Header = () => {
                 ? "absolute text-xl top-24 pl-9 left-0 w-full bg-white text-gray-900 z-50 duration-1000 md:flex"
                 : "absolute text-xl -top-96 -ml-8 duration-1000 w-full left-0 flex"
             } md:${
-              toggle ? "flex md:bg-transparent md:static md:w-fit" : "flex md:static md:w-fit"
+              toggle
+                ? "flex md:bg-transparent md:static md:w-fit flex-col md:flex-row"
+                : "flex md:static md:w-fit flex-row"
             }`}
           >
             <li className="block mt-6 mb-6 md:mr-8 md:text-white md:hover:text-rose-500 duration-500">
               <a href="#market">Market</a>
             </li>
-            <li className=" mt-6 mb-6 md:mr-8 md:text-white md:hover:text-rose-500 duration-500">
+            <li className="mt-6 mb-6 md:mr-8 md:text-white md:hover:text-rose-500 duration-500">
               <a href="#pricing">Pricing</a>
             </li>
           </ul>
