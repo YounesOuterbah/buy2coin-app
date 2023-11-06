@@ -5,7 +5,10 @@ export const Landing = () => {
   return (
     <div className="landing mt-7 mb-16">
       <div className="container flex items-center justify-center relative">
-        <img src={BITcoin} className="absolute w-14 left-6 md:w-28 md:left-12 animate-pulse" />
+        <img
+          src={BITcoin}
+          className="absolute w-14 left-6 md:w-28 md:left-12 lg:w-12 lg:top-12 xl:w-28 animate-pulse"
+        />
         <div className="big-title text-6xl md:text-8xl text-center font-bold">
           <span className="text-white">TRACK AND TRADE</span>
           <br />
@@ -16,7 +19,10 @@ export const Landing = () => {
             CRYPTO CURRENCIES
           </span>
         </div>
-        <img src={ETHcoin} className="absolute w-14 right-6 md:w-28 md:right-12 animate-pulse" />
+        <img
+          src={ETHcoin}
+          className="absolute w-14 right-6 md:w-28 md:right-12 lg:w-12 lg:top-12 xl:w-28 animate-pulse"
+        />
       </div>
     </div>
   );
