@@ -1,7 +1,7 @@
 export const SingleCoinChart = ({ options, data, setChartControl, Line }) => {
   return (
     <>
-      <div className="chart w-full bg-[#26272b] p-2 rounded">
+      <div className="chart w-full lg:w-11/12 md:mt-6 lg:mt-0 mx-auto bg-[#26272b] p-2 rounded">
         <Line options={options} data={data} />
         <div className="buttons flex justify-evenly mt-6 flex-wrap">
           <button

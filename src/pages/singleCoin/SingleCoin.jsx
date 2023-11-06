@@ -97,7 +97,7 @@ export const SingleCoin = () => {
   return (
     <div className="single-coin pt-16">
       <div className="container text-white">
-        <div className="coin-information-wrapper flex flex-col md:flex-row">
+        <div className="coin-information-wrapper flex flex-col xl:flex-row">
           <SingleCoinInfo coin={coin} />
           <SingleCoinChart
             options={options}
